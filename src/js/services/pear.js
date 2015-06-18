@@ -10,7 +10,8 @@
  */
 
 angular.module('Pear2Pear')
-  .factory('pear', ['$rootScope', 'swellRT', '$q', function($rootScope, swellRT, $q) {
+  .constant('SwellRTConfig', SwellRTConfig)
+  .factory('pear', ['$rootScope', 'SwellRTConfig', 'swellRT', '$q', function($rootScope, SwellRTConfig, swellRT, $q) {
 
     var model = {
       model : swellRT.copy
