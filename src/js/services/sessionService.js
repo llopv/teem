@@ -26,7 +26,7 @@ angular.module('Pear2Pear')
         // connected: everything alright!
         // disconnected: something bad happened
         connection: 'notConnected',
-        sync: true,
+        sync: true
       };
 
       window.onSwellRTReadyCalled = false;
@@ -199,6 +199,7 @@ angular.module('Pear2Pear')
         loginRequired: loginRequired,
         setFatalExceptionHandler: setFatalExceptionHandler,
         status: status,
+        showSaving: false,
         // TODO refactor with Prototype version of proxy objects to avoid the use of onLoad
         onLoad: function(f) {
           if (status.connection === 'notConnected' ||

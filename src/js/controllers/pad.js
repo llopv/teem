@@ -63,15 +63,29 @@ angular.module('Pear2Pear')
       $location.path('frontpage');
     };
 
-    angular.element(document.querySelector('.swellrt-editor')).on(
-      'focusin',
-      function(){
-        if ($scope.project.isContributor()){
-          $timeout(function(){
-            document.getElementById('pad').focus();
-            $scope.toggleFullScreenEdit();
-          });
-        }
+    $scope.ed = {
+      editting: false
+    };
+
+    $scope.editOn = function() {
+      $scope.ed.editting = true;
+
+      SessionSvc.saving = true;
+    };
+
+    $scope.editOff = function() {
+      $scope.ed.editting = false;
+
+      SessionSvc.saving = false;
+    };
+
+    angular.element(document.querySelector('.wave-editor-on')).
+      on('focus', function() {
+        console.log('bla');
+        $scope.editOn();
+      }).
+      on('blur', function() {
+        $scope.editOff();
       });
 
     // Do not leave pad without giving a title to the project
@@ -82,16 +96,4 @@ angular.module('Pear2Pear')
         SharedState.turnOn('projectTitleReminder');
       }
     });
-
-    $scope.ed = {
-      editting: false
-    };
-
-    $scope.toggleFullScreenEdit = function() {
-      $scope.ed.editting = !$scope.ed.editting;
-
-      if ($scope.ed.editting) {
-        document.getElementById('pad').focus();
-      }
-    };
   }]);
