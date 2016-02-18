@@ -104,6 +104,18 @@ angular.module('Teem')
       });
     };
 
+    function updateUserProfile(data, cb) {
+      swellRTpromise.then(function() {
+        SwellRT.updateUserProfile(data, cb);
+      });
+    }
+
+    function getUserProfile(data, cb) {
+      swellRTpromise.then(function() {
+        SwellRT.getUserProfile(data, cb);
+      });
+    }
+
     var stopSession = function(){
       swellRTpromise.then(function(){
         users.clearCurrent();
@@ -218,6 +230,8 @@ angular.module('Teem')
     return {
       users: users,
       registerUser: registerUser,
+      updateUserProfile: updateUserProfile,
+      getUserProfile: getUserProfile,
       startSession: startSession,
       stopSession: stopSession,
       loginRequired: loginRequired,
