@@ -38,7 +38,8 @@ var config = {
       './bower_components/moment/moment.js',
       './bower_components/moment/locale/es.js',
       './bower_components/angular-moment/angular-moment.js',
-      './bower_components/ng-img-crop/compile/unminified/ng-img-crop.js'
+      './bower_components/ng-img-crop/compile/unminified/ng-img-crop.js',
+      './bower_components/ng-file-upload/ng-file-upload.js'
 
     ],
 
@@ -356,7 +357,7 @@ gulp.task('js:app', function() {
   .pipe(sourcemaps.init())
   .pipe(concat('app.js'))
   .pipe(ngAnnotate())
-  .pipe(uglify())
+//  .pipe(uglify())
   .pipe(rename({suffix: '.min'}))
   .pipe(sourcemaps.write('.', {
     sourceMappingURLPrefix: '/js/'
@@ -366,7 +367,7 @@ gulp.task('js:app', function() {
 
 gulp.task('js:widgets', function() {
   return gulp.src('./src/js/widgets.js')
-  .pipe(uglify())
+  //.pipe(uglify())
   .pipe(gulp.dest(path.join(config.dest, 'js')));
 });
 

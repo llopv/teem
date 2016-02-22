@@ -1,0 +1,28 @@
+ <div class="modal" ui-if="avatarSharedState" ui-state="avatarSharedState">
+   <div class="modal-backdrop in" ui-turn-off="avatarSharedState"></div>
+
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button class="close"
+                 ui-turn-off="avatarSharedState">&times;</button>
+         <h4 class="modal-title" translate>avatar.modal.message</h4>
+       </div>
+       <div class="modal-body">
+
+
+         <div ngf-drop ngf-select ng-model="avatarFile" class="drop-box"
+         ngf-drag-over-class="'dragover'" accept="image/*"
+         ngf-pattern="'image/*'">Drop an image here or click to upload</div>
+
+
+         <div class="col-sm-10" ng-show="avatarFile">
+           <div class="cropArea">
+             <img-crop image="avatarFile | ngfDataUrl" result-image="croppedAvatar"></img-crop>
+           </div>
+           <button ng-click="saveAvatar()" translate>profile.avatar.save</button>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
