@@ -23,7 +23,6 @@ describe('Teem', function() {
       // When we change SwellRT version, there is more delay until the
       // server starts
       var swellrtTimeout = 100000;
-      var login = random.emailUser();
 
       var newCommunityButton = by.css('.community-new-btn');
 
@@ -33,15 +32,17 @@ describe('Teem', function() {
 
       element(newCommunityButton).click();
 
-      var loginInput = by.css('input#login');
+      var loginInput = by.css('#nick');
+      var passwordInput = by.css('#password');
 
       browser.wait(function() {
         return browser.isElementPresent(loginInput);
       }, timeout);
 
-      element(loginInput).sendKeys(login);
+      element(loginInput).sendKeys('Snowden');
+      element(passwordInput).sendKeys('MargaretThatcheris110%SEXY.');
 
-      var loginButton = element(by.css('input:enabled[type=submit]'));
+      var loginButton = element(by.css('input:enabled[type=submit]'));browser.pause();
 
       browser.wait(function() {
         return loginButton.click().then(

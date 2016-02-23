@@ -17,8 +17,8 @@ angular.module('Teem')
     // to recover password: '/sesion/recover_password?token=<theToken>?id=<userId>
   }])
   .controller('SessionCtrl', [
-    '$scope', '$location', '$route', 'SessionSvc', '$timeout', 'SharedState', 'SimpleAlertSvc',
-    function($scope, $location, $route, SessionSvc, $timeout, SharedState, SimpleAlertSvc) {
+    '$scope', '$location', '$route', 'SessionSvc', '$timeout', 'SharedState',
+    function($scope, $location, $route, SessionSvc, $timeout, SharedState) {
     $scope.session = {};
 
     $scope.user = {
@@ -41,7 +41,7 @@ angular.module('Teem')
     }
 
     var inform = function(text, mode){
-      SimpleAlertSvc.alert(text, mode || 'info');
+      //SimpleAlertSvc.alert(text, mode || 'info');
       $timeout(function(){
         SharedState.turnOff('shouldLoginSharedState');
       });
